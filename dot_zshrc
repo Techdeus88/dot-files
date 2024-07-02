@@ -1,0 +1,152 @@
+# Fig pre block. Keep at the top of this file.
+# [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# zsh options: http://zsh.sourceforge.net/Doc/Release/Options.html
+setopt APPEND_HISTORY # adds history
+setopt HIST_IGNORE_ALL_DUPS # If a new command line being added to the history list duplicates an older one, the older command is removed from the list
+setopt HIST_IGNORE_SPACE # No history when starting command with space
+setopt HIST_SAVE_NO_DUPS # When writing out the history file, older commands that duplicate newer ones are omitted
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.config/zsh/.oh-my-zsh"
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Disable oh-my-zsh themes for pure-prompt (https://github.com/sindresorhus/pure)
+# ZSH_THEME=""
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+source $ZSH/oh-my-zsh.sh
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(asdf)
+
+# load plugins
+[ -f ~/.config/dot_zplug.sh ] && source ~/.config/dot_zplug.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# User configuration
+alias nvim-techdeus="NVIM_APPNAME=TechDeus nvim"
+alias nvim-mini="NVIM_APPNAME=MiniNvim nvim"
+alias nvim-test="NVIM_APPNAME=TestNvim nvim"
+
+function nvims() {
+  items=("default" "TechDeus" "MiniNvim" "TestNvim")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "default" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $@
+}
+
+function set_win_title(){
+    echo -ne "\033]0; Techdeus \007"
+}
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# key bindings
+bindkey '[C' forward-word   # alt+left
+bindkey '[D' backward-word  # alt+right
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export EDITOR="/usr/local/bin/mate -w"
+
+# Created by `pipx` on 2024-04-21 04:53:30
+export PATH="$PATH:/Users/AgentSullivan/.local/bin"
+
+# pnpm
+export PNPM_HOME="/Users/AgentSullivan/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+bindkey -s ^a "nvims\n"
+
+# Change the default configuration location for Starship
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CACHE=~/.config/starship/.starship/cache
+
+# starship_precmd_user_func="set_win_title"
+precmd_functions+=(set_win_title)
+# Initialize the Starship binary
+eval "$(starship init zsh)"
+
+# Fig post block. Keep at the bottom of this file.
+# [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

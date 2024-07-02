@@ -1,0 +1,69 @@
+# window:
+#   # Window padding (changes require restart)
+#   #
+#   # Blank space added around the window in pixels. This padding is scaled
+#   # by DPI and the specified value is always added at both opposing sides.
+#   padding:
+#    x: 10
+#    y: 25
+
+#   # Window decorations
+#   # Available values:
+#   # - `full`: Window with title bar and title bar buttons
+#   # - `none`: Window without title bar, rounded corners, or drop shadow
+#   # - `transparent`: Window with title bar with transparent background and title
+#   #   bar buttons
+#   # - `buttonless`: Window with title bar with transparent background and no
+#   #   title bar buttons
+#   decorations: transparent
+
+# cursor:
+#   style:
+#     blinking: Always
+#   blink_interval: 500
+
+# # Font configuration (changes require restart)
+# font:
+#   # Point size
+#   size: 12.0
+
+# # Colors (Snazzy) https://github.com/alebelcor/alacritty-snazzy/blob/master/snazzy.yml
+# draw_bold_text_with_bright_colors: true
+
+# colors:
+
+#   primary:
+#     background: '#282a36'
+#     foreground: '#eff0eb'
+
+#   cursor:
+#     cursor: '#97979b'
+
+#   selection:
+#     text:       '#282a36'
+#     background: '#feffff'
+
+#   normal:
+#     black:   '#282a36'
+#     red:     '#ff5c57'
+#     green:   '#5af78e'
+#     yellow:  '#f3f99d'
+#     blue:    '#57c7ff'
+#     magenta: '#ff6ac1'
+#     cyan:    '#9aedfe'
+#     white:   '#f1f1f0'
+
+#   bright:
+#     black:   '#686868'
+#     red:     '#ff5c57'
+#     green:   '#5af78e'
+#     yellow:  '#f3f99d'
+#     blue:    '#57c7ff'
+#     magenta: '#ff6ac1'
+#     cyan:    '#9aedfe'
+#     white:   '#eff0eb'
+
+
+# key_bindings:
+#   - { key: Left,     mods: Alt,   chars: "\x1bb" } # backward-word
+#   - { key: Right,    mods: Alt,   chars: "\x1bf" } # forward-word
