@@ -1,0 +1,20 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between prompt shells
+add_newline = true
+
+# A minimal left prompt
+format = """$character"""
+
+# move the rest of the prompt to the right
+right_format = """$all"""
+
+# Replace the ')' symbol with '[➜]'
+[character]
+success_symbol = '[➜](bold green)'
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
