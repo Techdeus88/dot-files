@@ -1,0 +1,204 @@
+return {
+	-- LSP: Renaming renaming on the command preview feature
+	-- {
+	-- 	"smjonas/inc-rename.nvim",
+	-- 	cmd = "IncRename",
+	-- 	config = true,
+	-- },
+	-- {
+	-- 	"ray-x/go.nvim",
+	-- 	ft = { "go", "gomod", "gosum", "gowork", "gotmpl" },
+	-- 	dependencies = {
+	-- 		{
+	-- 			"ray-x/guihua.lua",
+	-- 			build = "cd lua/fzy && make",
+	-- 		},
+	-- 	},
+	-- 	config = function()
+	-- 		require("configs.go")
+	-- 	end,
+	-- 	build = ':lua require("go.install").update_all_sync()',
+	-- },
+	-- LSP: TSC type checking
+	-- {
+	-- 	"dmmulroy/tsc.nvim",
+	-- 	cmd = { "TSC" },
+	-- 	opts = {
+	-- 		auto_open_qflist = true,
+	-- 		use_trouble_qflist = true,
+	-- 		run_as_monorepo = true,
+	-- 		use_diagnostics = true,
+
+	-- 		spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+	-- 	},
+	-- },
+	-- Package JSON checks
+	-- {
+	-- 	"BrunoKrugel/package-info.nvim",
+	-- 	event = "BufEnter package.json",
+	-- 	opts = {
+	-- 		icons = {
+	-- 			enable = true,
+	-- 			style = {
+	-- 				up_to_date = "  ",
+	-- 				outdated = "  ",
+	-- 			},
+	-- 		},
+	-- 		autostart = true,
+	-- 		hide_up_to_date = true,
+	-- 		hide_unstable_versions = true,
+	-- 	},
+	-- },
+	-- {
+	-- 	"JoosepAlviste/nvim-ts-context-commentstring",
+	-- 	opts = {
+	-- 		enable_autocmd = false,
+	-- 	},
+	-- },
+	-- {
+	-- 	"numToStr/Comment.nvim",
+	-- 	opts = {
+	-- 		--			pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+	-- 	},
+	-- },
+	-- Editing: Autopair the use of {}, [], & ()
+	-- {
+	-- 	"windwp/nvim-autopairs",
+	-- 	event = { "InsertEnter" },
+	-- 	dependencies = {
+	-- 		"hrsh7th/nvim-cmp",
+	-- 	},
+	-- 	config = function()
+	-- 		-- import nvim-autopairs
+	-- 		local autopairs = require("nvim-autopairs")
+	-- 		-- configure autopairs
+	-- 		autopairs.setup({
+	-- 			check_ts = true, -- enable treesitter
+	-- 			ts_config = {
+	-- 				lua = { "string" }, -- don't add pairs in lua string treesitter nodes
+	-- 				javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
+	-- 				java = false, -- don't check treesitter on java
+	-- 			},
+	-- 		})
+	-- 		-- import nvim-autopairs completion functionality
+	-- 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+	-- 		-- import nvim-cmp plugin (completions plugin)
+	-- 		local cmp = require("cmp")
+	-- 		-- make autopairs and completion work together
+	-- 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+	-- 	end,
+	-- },
+	-- Editor: Code indenting
+	-- {
+	-- 	"nmac427/guess-indent.nvim",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("guess-indent").setup({})
+	-- 	end,
+	-- },
+	-- Editor: Code folding
+	-- {
+	-- 	"kevinhwang91/nvim-ufo",
+	-- 	dependencies = {
+	-- 		"kevinhwang91/promise-async",
+	-- 	},
+			-- config = function()
+			-- 	require("ufo").setup()
+			-- end,
+	-- },
+	-- Editor: Track & highlight undo\'s
+	-- {
+	-- 	"tzachar/highlight-undo.nvim",
+	-- 	event = "BufReadPost",
+	-- 	opts = {},
+	-- },
+	-- Editor: Find & Replace Enhancement
+	-- {
+	-- 	"gbprod/substitute.nvim",
+	-- 	event = { "BufReadPre", "BufNewFile" },
+	-- 	config = function()
+	-- 		local substitute = require("substitute")
+	-- 		substitute.setup()
+	-- 		-- set keymaps
+	-- 		local keymap = vim.keymap -- for conciseness
+	-- 		keymap.set("n", "s", substitute.operator, { desc = "Substitute with motion" })
+	-- 		keymap.set("n", "ss", substitute.line, { desc = "Substitute line" })
+	-- 		keymap.set("n", "S", substitute.eol, { desc = "Substitute to end of line" })
+	-- 		keymap.set("x", "s", substitute.visual, { desc = "Substitute in visual mode" })
+	-- 	end,
+	-- },
+	-- Editor: Split & join club
+	-- {
+	-- 	"Wansmer/treesj",
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	-- 	keys = { "<space>m", "<space>j", "<space>s", { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
+	-- 	opts = { use_default_keymaps = false, max_join_length = 150 },
+	-- },
+	-- Editor: Navigate code with search labels and enhanced character motions
+	-- {
+	-- 	"folke/flash.nvim",
+	-- 	event = "VeryLazy",
+	-- 	---@type Flash.Config
+	-- 	opts = {},
+	-- 	keys = {
+	-- 		{
+	-- 			"s",
+	-- 			mode = { "n", "x", "o" },
+	-- 			function()
+	-- 				require("flash").jump()
+	-- 			end,
+	-- 			desc = "Flash",
+	-- 		},
+	-- 		{
+	-- 			"S",
+	-- 			mode = { "n", "x", "o" },
+	-- 			function()
+	-- 				require("flash").treesitter()
+	-- 			end,
+	-- 			desc = "Flash Treesitter",
+	-- 		},
+	-- 		{
+	-- 			"r",
+	-- 			mode = "o",
+	-- 			function()
+	-- 				require("flash").remote()
+	-- 			end,
+	-- 			desc = "Remote Flash",
+	-- 		},
+	-- 		{
+	-- 			"R",
+	-- 			mode = { "o", "x" },
+	-- 			function()	
+	-- 				require("flash").treesitter_search()
+	-- 			end,
+	-- 			desc = "Treesitter Search",
+	-- 		},
+	-- 		{
+	-- 			"<c-s>",
+	-- 			mode = { "c" },
+	-- 			function()
+	-- 				require("flash").toggle()
+	-- 			end,
+	-- 			desc = "Toggle Flash Search",
+	-- 		},
+	-- 	},
+	-- 	config = function(_, opts)
+	-- 		require("flash").treesitter(opts)
+	-- 	end,
+	-- },
+	-- Editor: Better cut functionality
+	-- {
+	-- 	"gbprod/cutlass.nvim",
+	-- 	event = "BufReadPost",
+	-- 	opts = {
+	-- 		cut_key = "x",
+	-- 		override_del = true,
+	-- 		exclude = {},
+	-- 		registers = {
+	-- 			select = "_",
+	-- 			delete = "_",
+	-- 			change = "_",
+	-- 		},
+	-- 	},
+	-- },
+}
